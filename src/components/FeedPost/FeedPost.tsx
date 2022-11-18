@@ -6,18 +6,18 @@ import fonts from "../../theme/fonts";
 
 import { Entypo, AntDesign, Ionicons, Feather } from "@expo/vector-icons";
 
-const FeedPost = () => {
+const FeedPost = ({ post }) => {
   return (
     <SafeAreaView style={styles.post}>
       {/* Header */}
       <View style={styles.header}>
         <Image
           source={{
-            uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg",
+            uri: post.user.image,
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>AmongUsBlue</Text>
+        <Text style={styles.userName}>{post.user.username}</Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
@@ -28,7 +28,7 @@ const FeedPost = () => {
       {/* Content */}
       <Image
         source={{
-          uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg",
+          uri: post.image,
         }}
         style={styles.image}
       />
@@ -66,19 +66,23 @@ const FeedPost = () => {
         <Text style={styles.text}>
           Liked by{" "}
           <Text style={{ fontWeight: fonts.weight.bold }}>mortysmith</Text> and{" "}
-          <Text style={{ fontWeight: fonts.weight.bold }}>50 others</Text>
+          <Text style={{ fontWeight: fonts.weight.bold }}>
+            {post.nofLikes} others
+          </Text>
         </Text>
 
         {/* Post description */}
         <Text style={styles.text}>
-          <Text style={{ fontWeight: fonts.weight.bold }}>AmongUsBlue</Text> A
-          beautiful morning for a hike. It's starting to get chilly out,
-          thankfully I brought my Summit 2022 thermos. Kept my coffee blazing
-          hot!
+          <Text style={{ fontWeight: fonts.weight.bold }}>
+            {post.user.username}
+          </Text>{" "}
+          {post.description}
         </Text>
 
         {/* Comments */}
-        <Text style={{ color: "grey" }}>View all 15 comments</Text>
+        <Text style={{ color: "grey" }}>
+          View all {post.nofComments} comments
+        </Text>
         <View style={styles.comment}>
           <Text style={styles.commentText}>
             <Text style={{ fontWeight: fonts.weight.bold }}>mortysmith</Text>{" "}
@@ -93,7 +97,7 @@ const FeedPost = () => {
         </View>
 
         {/* Time since posted */}
-        <Text style={{ color: "grey" }}>1w</Text>
+        <Text style={{ color: "grey" }}>{post.createdAt}</Text>
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>
