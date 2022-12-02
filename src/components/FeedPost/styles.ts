@@ -38,15 +38,7 @@ export default StyleSheet.create({
     marginBottom: 5,
   },
   icon: {
-    margin: 5,
-  },
-  comment: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  commentText: {
-    flex: 1,
-    lineHeight: 18,
+    marginHorizontal: 5,
   },
   text: {
     lineHeight: 18,

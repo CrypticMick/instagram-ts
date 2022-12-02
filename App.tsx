@@ -17,45 +17,16 @@ const post = {
   comments: [
     {
       id: "1",
-      comment: "Hello there",
+      comment: "Oh jeez. Georgeus, just look at it. ",
       user: {
-        username: "vadimnotjustdev",
+        username: "mortysmith",
       },
     },
     {
       id: "2",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. H",
+      comment: "I want to take Jessica there, drop the location",
       user: {
-        username: "vadimnotjustdev",
-      },
-    },
-  ],
-};
-
-const post1 = {
-  id: "2",
-  createdAt: "2w",
-  image: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg",
-  description: "Can't beat these views!!",
-  user: {
-    image: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg",
-    username: "AmongUsBlue",
-  },
-  nofComments: 11,
-  nofLikes: 33,
-  comments: [
-    {
-      id: "1",
-      comment: "Hello there",
-      user: {
-        username: "vadimnotjustdev",
-      },
-    },
-    {
-      id: "2",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. H",
-      user: {
-        username: "vadimnotjustdev",
+        username: "mortysmith",
       },
     },
   ],
@@ -65,7 +36,7 @@ const App = () => {
   return (
     <ScrollView style={styles.app}>
       <FeedPost post={post} />
-      <FeedPost post={post1} />
+
       <StatusBar style="auto" />
     </ScrollView>
   );

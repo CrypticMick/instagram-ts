@@ -1,12 +1,18 @@
 import { StatusBar } from "expo-status-bar";
 import { Image, SafeAreaView, Text, View } from "react-native";
+import { Entypo, AntDesign, Ionicons, Feather } from "@expo/vector-icons";
 import styles from "./styles";
 import colors from "../../theme/colors";
 import fonts from "../../theme/fonts";
 
-import { Entypo, AntDesign, Ionicons, Feather } from "@expo/vector-icons";
+import Comment from "../Comment";
+import { IPost } from "../../types/models";
 
-const FeedPost = ({ post }) => {
+interface IFeedPost {
+  post: IPost;
+}
+
+const FeedPost = ({ post }: IFeedPost) => {
   return (
     <SafeAreaView style={styles.post}>
       {/* Header */}
@@ -83,18 +89,9 @@ const FeedPost = ({ post }) => {
         <Text style={{ color: "grey" }}>
           View all {post.nofComments} comments
         </Text>
-        <View style={styles.comment}>
-          <Text style={styles.commentText}>
-            <Text style={{ fontWeight: fonts.weight.bold }}>mortysmith</Text>{" "}
-            Looks gorgeous, just look at it. Gorgeous.
-          </Text>
-          <AntDesign
-            name={"hearto"}
-            size={14}
-            style={styles.icon}
-            color={colors.black}
-          />
-        </View>
+        {post.comments.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
 
         {/* Time since posted */}
         <Text style={{ color: "grey" }}>{post.createdAt}</Text>
